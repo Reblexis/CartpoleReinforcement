@@ -10,6 +10,7 @@ env.reset()
 for i in range(20000):
     state_ = np.array(env.env.state)
     state = torch.from_numpy(state_).float()
+    
     logits,value = model(state)
     action_dist = torch.distributions.Categorical(logits=logits)
     action = action_dist.sample()
